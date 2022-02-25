@@ -1,1 +1,1 @@
-# the_world_of_shifu
+# the Legend of ShiFu
