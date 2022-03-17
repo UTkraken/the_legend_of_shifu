@@ -24,5 +24,10 @@ namespace DataObject
         {
 
         }
+
+        public Deck GetDeck()
+        {
+            return deck;
+        }
     }
 }

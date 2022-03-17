@@ -15,18 +15,22 @@ namespace DataObject
         private bool invincible;
 
         //entity fnc
-        public void dammage(int dammageValue)
+        public void LoseHealth(int damageValue)
         {
             if (!this.invincible)
             {
-                this.health -= dammageValue;
+                this.health -= damageValue;
                 if (this.health < 0)
                 {
                     this.health = 0;
                 }
 
             }
+        }
 
+        public int GetHealth()
+        {
+            return this.health;
         }
 
         public void heal(int healValue)

@@ -6,7 +6,7 @@ namespace DataObject
 {
     public class Deck
     {
-        List<Card> card = new List<Card>();
+        List<Card> cards = new List<Card>();
 
 
     }
