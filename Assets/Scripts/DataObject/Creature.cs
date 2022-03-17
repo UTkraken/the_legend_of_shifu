@@ -33,7 +33,7 @@ namespace DataObject
             return this.health;
         }
 
-        public void heal(int healValue)
+        public void Heal(int healValue)
         {
             this.health += healValue;
             if (this.health > this.maxHealth)
@@ -42,9 +42,9 @@ namespace DataObject
             }
         }
 
-        public void heal()
+        public void FullHeal()
         {
-            this.heal(this.maxHealth);
+            this.Heal(maxHealth);
         }
 
         // Start is called before the first frame update

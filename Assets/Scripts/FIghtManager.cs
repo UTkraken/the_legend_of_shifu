@@ -10,15 +10,7 @@ public class FightManager : MonoBehaviour
     private PNJ pNJ;
     private Card selectedCard;
     private int round = 0;
-    private bool taskInProgress = true;
-    // TODO placer dans un fichier
-    enum Step
-    {
-        InitialisationFight,
-        PlayerStep,
-        CardComparison,
-        InitialisationRound
-    }
+
     // TODO placer dans un fichier
     enum ResultComparison
     {
@@ -26,50 +18,23 @@ public class FightManager : MonoBehaviour
         Equality,
         Victory
     }
-    private Step step;
 
     // Start is called before the first frame update
     void Start()
     {
-        //DisplayInterface();
-        //DisplayNarration();
-        step = Step.InitialisationFight;
+        // await DisplayNarration();
+        FightInitialisation();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (!this.taskInProgress)
-        {
-            if (this.IsFightInProgress())
-            {
-                switch(this.step)
-                {
-                    case Step.InitialisationFight:
-                        FightInitialisation();
-                        break;
-                    case Step.PlayerStep:
-                        PlayerStep();
-                        break;
-                    case Step.CardComparison:
-                        CardComparison();
-                        break;
-                    case Step.InitialisationRound:
-                        InitialisationRound();
-                        break;
-                }
-            }
-            else
-            {
-                ManageEndFight();
-            }
-        }
+
     }
 
-    private bool IsFightInProgress()
+    private bool IsFightEnded()
     {
-        // TODO check Pv
-        return pNJ.GetHealth() > 0 && player.GetHealth() > 0;
+        return pNJ.GetHealth() == 0 || player.GetHealth() == 0;
     }
 
     private void ManageEndFight()
@@ -84,6 +49,7 @@ public class FightManager : MonoBehaviour
         } else
         {
             // await GameOverAnimation();
+            // reset de la save
             // return to main menu
         }
         this.enabled = false;
@@ -91,29 +57,19 @@ public class FightManager : MonoBehaviour
 
     private void FightInitialisation()
     {
-        this.taskInProgress = true;
         // HandleFirstDraw(player.GetDeck());
+        player.FullHeal();
         this.round++;
-        step = Step.PlayerStep;
-        this.taskInProgress = false;        
-    }
-
-    private void PlayerStep()
-    {
-        this.taskInProgress = true;
-        //Enable card selection
-        step = Step.PlayerStep;
-        this.taskInProgress = false;        
     }
 
     private void CardComparison()
     {
-        // Disable selection card
-        this.taskInProgress = true;
-        // DiscardCard(selectedCard);
-        // await ComparisonCardAnimiation();
+        // DestroyCard(selectedCard);
         Card botCard = new Card();//BotCardChoice();
-        switch(Comparer(this.selectedCard, botCard))
+
+        // await ComparisonCardAnimiation();
+
+        switch (Comparer(this.selectedCard, botCard))
         {
             case ResultComparison.Defeat:
                 // await DestroyAnimation(this.selectedCard);
@@ -130,8 +86,13 @@ public class FightManager : MonoBehaviour
                 break;
 
         }
-        // await ComparisonCardAnimiation();
-        this.taskInProgress = false;
+
+        if (this.IsFightEnded()) {
+            ManageEndFight();
+        } else
+        {
+            InitialisationRound();            
+        }
     }
     
     private ResultComparison Comparer(Card firstCard, Card secondCard)
@@ -153,17 +114,13 @@ public class FightManager : MonoBehaviour
 
     public void SetCardSelected(Card card)
     {
-        this.selectedCard = card;
-        this.step = Step.CardComparison;
+        CardComparison();
     }
 
     public void InitialisationRound()
     {
-        this.taskInProgress = true;
         // HandleDraw();
         // await DrawAnimation();
         this.round++;
-        this.step = Step.PlayerStep;
-        this.taskInProgress = false;
     }
 }
