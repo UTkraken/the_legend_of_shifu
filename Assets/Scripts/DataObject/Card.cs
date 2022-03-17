@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-[System.Serializable]
 
 namespace DataObject
 {
-    public class Card
+    [System.Serializable]
+    public class Card : MonoBehaviour
     {
         private int id;
         private string symbol;
@@ -16,7 +16,7 @@ namespace DataObject
 
         public Card() { }
 
-        public Card(int id, string symbol, string textSymbol, Sprit ThisImage)
+        public Card(int id, string symbol, string textSymbol, Sprite ThisImage)
         {
             this.id = id;
             this.symbol = symbol;
