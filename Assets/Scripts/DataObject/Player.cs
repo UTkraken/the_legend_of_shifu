@@ -9,7 +9,7 @@ namespace DataObject
 
         private int goldCount;
 
-        List<Cards> available_cards = new List<Cards>();
+        List<Card> available_cards = new List<Card>();
 
         Deck deck = new Deck();
 

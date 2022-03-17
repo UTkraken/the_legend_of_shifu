@@ -14,7 +14,7 @@ namespace DataObject
             this.type = type;
         }
 
-        public Cards drawCard()
+        public Card drawCard()
         {
             switch (this.type)
             {
