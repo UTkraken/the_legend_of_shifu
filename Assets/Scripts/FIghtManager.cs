@@ -9,15 +9,7 @@ public class FightManager : MonoBehaviour
     private Player player;
     private PNJ pNJ;
     private Card selectedCard;
-    private int round = 0;
-
-    // TODO placer dans un fichier
-    enum ResultComparison
-    {
-        Defeat,
-        Equality,
-        Victory
-    }
+    private int round = 0;    
 
     // Start is called before the first frame update
     void Start()
@@ -32,11 +24,18 @@ public class FightManager : MonoBehaviour
 
     }
 
+    /**
+     * <summary>Condition de fin de combat.</summary>
+     * <returns>Retourne Vrai si le combat est terminé, et Faux sinon.</returns> 
+     **/
     private bool IsFightEnded()
     {
         return pNJ.GetHealth() == 0 || player.GetHealth() == 0;
     }
 
+    /**
+     * <summary>Gère les actions de fin de combat dans le cas d'une fin de combat</summary>
+     **/
     private void ManageEndFight()
     {
         // Cas de Victoire
@@ -55,6 +54,9 @@ public class FightManager : MonoBehaviour
         this.enabled = false;
     }
 
+    /**
+     * <summary>Etape d'initialisation du combat</summary>
+     **/
     private void FightInitialisation()
     {
         // HandleFirstDraw(player.GetDeck());
@@ -62,6 +64,9 @@ public class FightManager : MonoBehaviour
         this.round++;
     }
 
+    /**
+     * <summary>Etape de comparaison des symboles entre joueur et bot.</summary>
+     **/
     private void CardComparison()
     {
         // DestroyCard(selectedCard);
@@ -94,7 +99,13 @@ public class FightManager : MonoBehaviour
             InitialisationRound();            
         }
     }
-    
+
+    /**
+     * <summary>Compare la carte du joueur avec la carte du bot.</summary>
+     * <param name="firstCard">La main carte de la comparaison.</param>
+     * <param name="secondCard">La main carte de la comparaison.</param>
+     * <returns>Retourne un ResultComparison qui vaux victoire, égalité ou défaite.</returns>
+     **/
     private ResultComparison Comparer(Card firstCard, Card secondCard)
     {
         // TODO
@@ -112,11 +123,19 @@ public class FightManager : MonoBehaviour
         return ResultComparison.Victory;
     }
 
+    /**
+     * <summary>Etape de sélection de la carte.</summary>
+     * <param name="card">La carte choisi par le joueur.</param>
+     **/
     public void SetCardSelected(Card card)
     {
+        this.selectedCard = card;
         CardComparison();
     }
 
+    /**
+     * <summary>Etape d'initialisation d'un nouveau round.</summary>
+     **/
     public void InitialisationRound()
     {
         // HandleDraw();
