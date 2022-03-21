@@ -15,21 +15,25 @@ namespace DataObject
         private bool invincible;
 
         //entity fnc
-        public void dammage(int dammageValue)
+        public void LoseHealth(int damageValue)
         {
             if (!this.invincible)
             {
-                this.health -= dammageValue;
+                this.health -= damageValue;
                 if (this.health < 0)
                 {
                     this.health = 0;
                 }
 
             }
-
         }
 
-        public void heal(int healValue)
+        public int GetHealth()
+        {
+            return this.health;
+        }
+
+        public void Heal(int healValue)
         {
             this.health += healValue;
             if (this.health > this.maxHealth)
@@ -38,9 +42,9 @@ namespace DataObject
             }
         }
 
-        public void heal()
+        public void FullHeal()
         {
-            this.heal(this.maxHealth);
+            this.Heal(maxHealth);
         }
 
         // Start is called before the first frame update
