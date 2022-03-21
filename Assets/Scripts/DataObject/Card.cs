@@ -10,7 +10,7 @@ namespace DataObject
     {
         private int id;
         private string symbol;
-        private string textSymbol;
+        public string textSymbol;
 
 
         public Card() { }

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class Collection : MonoBehaviour
 {
@@ -25,7 +26,7 @@ public class Collection : MonoBehaviour
     {
         for (int i = 0; i < cardManager.cards.Count; i++)
         {
-            // cardSlots[i].transform.GetChild(6).transform.GetChild(0).GetComponent<Text>().text = cardManager.cards[i];
+            cardSlots[i].transform.GetChild(2).transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = ""+cardManager.cards[i].textSymbol;
         }
     }
 }
