@@ -9,7 +9,9 @@ public class PlayerMovement : MonoBehaviour
     public Rigidbody2D rb;
     public Animator animator;
     public SpriteRenderer sprite;
-    
+
+
+    string facing = "right";
 
     Vector2 movement;
 
@@ -40,10 +42,12 @@ public class PlayerMovement : MonoBehaviour
         if (movement.y > 0)
         {
             sprite.flipX = true;
+            facing = "left";
         }
         else if (movement.y < 0)
         {
             sprite.flipX = false;
+            facing = "right";
         }
 
         // changement d'animation 
@@ -55,5 +59,10 @@ public class PlayerMovement : MonoBehaviour
             animator.SetBool("running", true);
         }
        
+    }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        Debug.Log("collision");
     }
 }
