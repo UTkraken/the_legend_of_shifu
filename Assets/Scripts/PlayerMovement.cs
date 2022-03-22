@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour
     public Rigidbody2D rb;
     public Animator animator;
     public SpriteRenderer sprite;
+    public FixedJoystick joystick;
 
 
     string facing = "right";
@@ -32,11 +33,14 @@ public class PlayerMovement : MonoBehaviour
 
     void MovementInput()
     {
-        float mx = Input.GetAxisRaw("Vertical");
+        //deplacement fleche ordi
+        /*float mx = Input.GetAxisRaw("Vertical");
         float my = -1 * Input.GetAxisRaw("Horizontal");
-        
+        movement = new Vector2(mx, my).normalized;*/
 
-        movement = new Vector2(mx, my).normalized;
+        //deplacement joystick
+        Vector3 direction = Vector3.forward * joystick.Vertical + Vector3.right * joystick.Horizontal;
+        movement = new Vector2(direction.z, -1 * direction.x).normalized;
 
         // changement de direction (flip du sprite)
         if (movement.y > 0)
