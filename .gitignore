@@ -31,6 +31,11 @@ ExportedObj/
 *.apk
 *.unitypackage
 
+# Unity3D generated meta files
+*.pidb.meta
+*.pdb.meta
+*.mdb.meta
+
 # Crashlytics generated file
 crashlytics-build.properties
 
@@ -43,3 +48,10 @@ Thumbs.db.meta
 
 # VS Code
 *.vscode
+
+# Packed Addressables
+/[Aa]ssets/[Aa]ddressable[Aa]ssets[Dd]ata/*/*.bin*
+
+# Temporary auto-generated Android Assets
+/[Aa]ssets/[Ss]treamingAssets/aa.meta
+/[Aa]ssets/[Ss]treamingAssets/aa/*
