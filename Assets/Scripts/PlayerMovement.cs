@@ -9,7 +9,7 @@ public class PlayerMovement : MonoBehaviour
     public Rigidbody2D rb;
     public Animator animator;
     public SpriteRenderer sprite;
-    public FixedJoystick joystick;
+    public FloatingJoystick joystick;
 
 
     string facing = "right";
