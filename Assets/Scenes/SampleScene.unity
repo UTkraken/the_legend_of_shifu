@@ -658,8 +658,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 0.15000004, y: 0.21000004}
+  m_Offset: {x: 0, y: -0.05}
+  m_Size: {x: 0.1, y: 0.1}
   m_Direction: 0
 --- !u!1 &881997252
 GameObject:
@@ -987,7 +987,7 @@ GameObject:
   - component: {fileID: 1841201761}
   - component: {fileID: 1841201760}
   - component: {fileID: 1841201759}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: ennemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1008,6 +1008,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   detectDirection: 0
   detectRange: 5
+  speed: 2.5
 --- !u!61 &1841201760
 BoxCollider2D:
   m_ObjectHideFlags: 0
