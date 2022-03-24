@@ -32,22 +32,4 @@ public class ThisCard : MonoBehaviour
         It.transform.position = new Vector3(transform.position.x + (FightManager.deckIndex), transform.position.y, -1);
         It.transform.eulerAngles = new Vector3(25 ,0,0);
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        /*
-        hand = GameObject.Find("Hand");
-        
-        id = this_card[0].id;
-        this_text_symbol.text = this_card[0].textSymbol;
-
-        this.transform.parent = hand.transform;
-        It.transform.SetParent(hand.transform);
-        It.transform.localScale = Vector3.one;
-        It.transform.position = new Vector3(transform.position.x+ (FightManager.deckIndex * 150), transform.position.y, -1);
-        It.transform.eulerAngles = new Vector3(25 ,0,0);
-        */
-
-    }
 }
