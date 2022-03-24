@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 using DataObject;
@@ -9,8 +11,12 @@ public class FightManager : MonoBehaviour
     private Player player;
     private PNJ pNJ;
     private Card selectedCard;
-    private int round = 0;    
+    private int round = 0;
+    public static int deckIndex = 0;
 
+    private List<Card> actualDeck = new List<Card>();
+    public GameObject Card;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -26,7 +32,7 @@ public class FightManager : MonoBehaviour
 
     /**
      * <summary>Condition de fin de combat.</summary>
-     * <returns>Retourne Vrai si le combat est terminé, et Faux sinon.</returns> 
+     * <returns>Retourne Vrai si le combat est terminÃ©, et Faux sinon.</returns> 
      **/
     private bool IsFightEnded()
     {
@@ -34,7 +40,7 @@ public class FightManager : MonoBehaviour
     }
 
     /**
-     * <summary>Gère les actions de fin de combat dans le cas d'une fin de combat</summary>
+     * <summary>GÃ¨re les actions de fin de combat dans le cas d'une fin de combat</summary>
      **/
     private void ManageEndFight()
     {
@@ -44,7 +50,7 @@ public class FightManager : MonoBehaviour
             // await WinAnimation();
             // do reward etc
             // return to Map
-        // Case de défaite
+        // Case de dÃ©faite
         } else
         {
             // await GameOverAnimation();
@@ -60,17 +66,41 @@ public class FightManager : MonoBehaviour
     private void FightInitialisation()
     {
         // HandleFirstDraw(player.GetDeck());
-        player.FullHeal();
+        StartCoroutine(InitDeckInHand());
+        //player.FullHeal();
         this.round++;
     }
 
+    IEnumerator InitDeckInHand()
+    {
+        actualDeck = Database.deck;
+        Shuffle();
+        for (int i = 0; i < 3; i++)
+        {
+            yield return new WaitForSeconds(0.01f);     
+            StartCoroutine(Draw());
+           
+        }
+    }
+
+    IEnumerator Draw()
+    {
+        Instantiate(Card, transform.position, transform.rotation);
+        yield return new WaitForSeconds(0.1f);
+        deckIndex++;
+
+    }
+    void Shuffle()
+    {
+        actualDeck = actualDeck.OrderBy(a => Guid.NewGuid()).ToList();          
+    }
     /**
      * <summary>Etape de comparaison des symboles entre joueur et bot.</summary>
      **/
     private void CardComparison()
     {
         // DestroyCard(selectedCard);
-        Card botCard = new Card();//BotCardChoice();
+        Card botCard = new Card(1, "coucou", "coucou", 1);//BotCardChoice();
 
         // await ComparisonCardAnimiation();
 
@@ -104,7 +134,7 @@ public class FightManager : MonoBehaviour
      * <summary>Compare la carte du joueur avec la carte du bot.</summary>
      * <param name="firstCard">La main carte de la comparaison.</param>
      * <param name="secondCard">La main carte de la comparaison.</param>
-     * <returns>Retourne un ResultComparison qui vaux victoire, égalité ou défaite.</returns>
+     * <returns>Retourne un ResultComparison qui vaux victoire, Ã©galitÃ© ou dÃ©faite.</returns>
      **/
     private ResultComparison Comparer(Card firstCard, Card secondCard)
     {
@@ -124,7 +154,7 @@ public class FightManager : MonoBehaviour
     }
 
     /**
-     * <summary>Etape de sélection de la carte.</summary>
+     * <summary>Etape de sÃ©lection de la carte.</summary>
      * <param name="card">La carte choisi par le joueur.</param>
      **/
     public void SetCardSelected(Card card)
