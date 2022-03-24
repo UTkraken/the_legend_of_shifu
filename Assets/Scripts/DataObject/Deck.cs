@@ -1,3 +1,4 @@
+/*
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,10 +15,11 @@ namespace DataObject
         
         void Start()
         {
-            cards[0] = CardDatabase.cardList[0];
-            cards[1] = CardDatabase.cardList[1];
-            cards[2] = CardDatabase.cardList[2];
+            cards[0] = Database.cardList[0];
+            cards[1] = Database.cardList[1];
+            cards[2] = Database.cardList[2];
         }
        
     }
 }
+*/
