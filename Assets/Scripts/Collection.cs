@@ -7,7 +7,7 @@ using TMPro;
 public class Collection : MonoBehaviour
 {
     [SerializeField]
-    public CardManager cardManager;
+    //public CardManager cardManager;
     public GameObject[] cardSlots;
 
 
@@ -24,9 +24,9 @@ public class Collection : MonoBehaviour
 
     private void DisplayCard()
     {
-        for (int i = 0; i < cardManager.cards.Count; i++)
+        /*for (int i = 0; i < cardManager.cards.Count; i++)
         {
             cardSlots[i].transform.GetChild(2).transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = ""+cardManager.cards[i].textSymbol;
-        }
+        }*/
     }
 }
