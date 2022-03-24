@@ -10,18 +10,16 @@ namespace DataObject
     {
         private int id;
         private string symbol;
-        private string textSymbol;
+        public string textSymbol;
 
-        private Sprite ThisImage;
 
         public Card() { }
 
-        public Card(int id, string symbol, string textSymbol, Sprite ThisImage)
+        public Card(int id, string symbol, string textSymbol)
         {
             this.id = id;
             this.symbol = symbol;
             this.textSymbol = textSymbol;
-            this.ThisImage = ThisImage;
         }
 
     }
