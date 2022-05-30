@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using DataObject;
 using TMPro;
+using UnityEngine.UI;
 
 public class ThisCard : MonoBehaviour
 {
@@ -12,12 +13,13 @@ public class ThisCard : MonoBehaviour
     public List<Card> this_card = new List<Card>();
     
     public int id;
-    public string symbol;
     public string text_symbol;
+   public Sprite this_sprite;
+    public Image that_image;
 
     public TextMeshProUGUI this_text_symbol;
-    // Start is called before the first frame update
-    
+
+
     void Start()
     { 
         this_card.Add(Database.deck[FightManager.deckIndex]);
@@ -25,11 +27,8 @@ public class ThisCard : MonoBehaviour
         
         id = this_card[0].id;
         this_text_symbol.text = this_card[0].textSymbol;
+        this_sprite = this_card[0].ThisImage;
 
-        this.transform.parent = hand.transform;
-        It.transform.SetParent(hand.transform);
-        It.transform.localScale = Vector3.one;
-        It.transform.position = new Vector3(transform.position.x + (FightManager.deckIndex), transform.position.y, -1);
-        It.transform.eulerAngles = new Vector3(25 ,0,0);
+        that_image.sprite = this_sprite;
     }
 }

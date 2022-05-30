@@ -10,27 +10,20 @@ namespace DataObject
     public class Card : MonoBehaviour
     {
         public int id;
-        public string symbol;
         public string textSymbol;
-       // public TextMeshProUGUI textSymbol;
+        public Sprite ThisImage;
 
-        public int amount = 0;
-
-        //private Sprite ThisImage;
 
         public Card() { }
 
         public Card(
             int id,
-            string symbol,
             string textSymbol,
-            int amount)
+            Sprite thisImage)
         {
             this.id = id;
-            this.symbol = symbol;
             this.textSymbol = textSymbol;
-            //this.ThisImage = ThisImage;
-            this.amount = amount;
+            this.ThisImage = ThisImage;
         }
 
     }

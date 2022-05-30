@@ -17,22 +17,22 @@ namespace DataObject
 
         private void Start()
         {
-            initCardList();
+            // initCardList();
             createDeck();
         }
 
-        void initCardList()
-        {
-            cardList.Add(new Card(1, "Pierre", "text symbole", 1));
-            cardList.Add(new Card(2, "Feuille", "text symbole222", 1));
-            cardList.Add(new Card(3, "Ciseaux", "text symbole222", 1));
-        }
+        // void initCardList()
+        // {
+        //     cardList.Add(new Card(0, "Pierre", "text symbole", 1));
+        //     cardList.Add(new Card(1, "Feuille", "text symbole222", 1));
+        //     cardList.Add(new Card(2, "Ciseaux", "text symbole222", 1));
+        // }
 
         void createDeck()
         {
-            deck.Add(new Card(1, "Pierre", "Pierre", 1));
-            deck.Add(new Card(2, "Feuille", "Feuille", 1));
-            deck.Add(new Card(3, "Ciseaux", "Ciseaux", 1));
+            deck.Add(new Card(0, "Pierre", Resources.Load<Sprite>("Ressources/stone")));
+            deck.Add(new Card(1, "Feuille", Resources.Load<Sprite>("leaf")));
+            deck.Add(new Card(2, "Ciseaux", Resources.Load<Sprite>("sci")));
 
         }
     }
