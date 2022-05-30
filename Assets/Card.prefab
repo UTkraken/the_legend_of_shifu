@@ -163,7 +163,7 @@ GameObject:
   - component: {fileID: 4195506441738353525}
   - component: {fileID: 4195506441738353515}
   - component: {fileID: 4195506441738353514}
-  - component: {fileID: 130772536156846989}
+  - component: {fileID: -9195418233400052814}
   m_Layer: 5
   m_Name: Card
   m_TagString: Untagged
@@ -191,7 +191,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -6.0002}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4195506441738353515
@@ -232,7 +232,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &130772536156846989
+--- !u!114 &-9195418233400052814
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -241,12 +241,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 4195506441738353524}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1e8373c1124cdf645a1af211acdd5b9b, type: 3}
+  m_Script: {fileID: 11500000, guid: 2b2b4d925bac0fd49a0f7d37eeca0043, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  It: {fileID: 4195506441738353524}
+  this_card: []
   id: 0
   symbol: 
-  textSymbol: 
+  text_symbol: 
+  this_text_symbol: {fileID: 888465237522895041}
 --- !u!1 &4195506442229151714
 GameObject:
   m_ObjectHideFlags: 0
