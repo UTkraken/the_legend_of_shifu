@@ -12,7 +12,7 @@ namespace DataObject
 
         private int goldReward;
 
-        Deck deck = new Deck();
+        //Deck deck = new Deck();
 
 
 
