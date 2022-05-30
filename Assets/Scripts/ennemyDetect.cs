@@ -8,6 +8,7 @@ public class ennemyDetect : MonoBehaviour
     public int detectDirection = 0;//0 left | 1 Top | 2 Right | 3 Bottom
     public float detectRange = 5.0f;
     public float speed = 0.4f;
+    public Animator animator;
 
     bool checkForPlayer = true;
     bool walkToPlayer = false;
@@ -53,19 +54,24 @@ public class ennemyDetect : MonoBehaviour
                 Debug.Log("moving to " + hit.collider.name);
                 //Debug.DrawLine(transform.position, hit.point, Color.red, 1);
                 checkForPlayer = false;
+                //freeze player
                 hit.collider.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
+                //switch player anim
+                hit.collider.GetComponent<Animator>().SetBool("running", false);
 
                 hitMade = hit;
                 walkToPlayer = true;
+                animator.SetBool("running", true);
                 //todo play anim run
             }
         }
 
         if (walkToPlayer)
         {
+
             float step = speed * Time.deltaTime;
             transform.position = Vector2.MoveTowards(transform.position, hitMade.point, step);
-        }
+        } 
 
 
 
@@ -74,7 +80,9 @@ public class ennemyDetect : MonoBehaviour
     void OnCollisionEnter2D(Collision2D col)
     {
         walkToPlayer = false;
-        //stop anim run
+        animator.SetBool("running", false);
+
+        //Debug.Log(col.gameObject);
     }
 }
 

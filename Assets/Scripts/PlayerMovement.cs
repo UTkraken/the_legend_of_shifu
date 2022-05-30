@@ -55,7 +55,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         // changement d'animation 
-        if (movement.Equals(new Vector2(0,0)))
+        if (movement.Equals(new Vector2(0,0)) || rb.constraints == RigidbodyConstraints2D.FreezeAll)
         {
             animator.SetBool("running", false);
         } else
@@ -68,5 +68,10 @@ public class PlayerMovement : MonoBehaviour
     void OnCollisionEnter(Collision collision)
     {
         Debug.Log("collision");
+    }
+
+    void unfreeze()
+    {
+        rb.constraints = RigidbodyConstraints2D.None;
     }
 }
