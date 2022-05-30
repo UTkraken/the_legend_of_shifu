@@ -32,19 +32,23 @@ public class ennemyDetect : MonoBehaviour
             switch (detectDirection)
             {
                 case 0:
-                    direction = Vector2.up;
+                    //direction = Vector2.up;
+                    direction = -Vector2.right;
                     break;
 
                 case 1:
-                    direction = Vector2.right;
+                    //direction = Vector2.right;
+                    direction = Vector2.up;
                     break;
 
                 case 2:
-                    direction = -Vector2.up;
+                    //direction = -Vector2.up;
+                    direction = Vector2.right;
                     break;
 
                 case 3:
-                    direction = -Vector2.right;
+                    //direction = -Vector2.right;
+                    direction = -Vector2.up;
                     break;
             }
 
