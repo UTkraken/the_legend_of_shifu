@@ -7,7 +7,7 @@ using UnityEngine.UI;
 namespace DataObject
 {
     [System.Serializable]
-    public class Card
+    public class Card : MonoBehaviour
     {
         public int id;
         public string symbol;
