@@ -7,6 +7,12 @@ public class PlayerMovement : MonoBehaviour
     public float moveSpeed = 0.7f;
 
     public Rigidbody2D rb;
+    public Animator animator;
+    public SpriteRenderer sprite;
+    public FloatingJoystick joystick;
+
+
+    string facing = "right";
 
     Vector2 movement;
 
@@ -27,9 +33,45 @@ public class PlayerMovement : MonoBehaviour
 
     void MovementInput()
     {
-        float mx = Input.GetAxisRaw("Horizontal");
-        float my = Input.GetAxisRaw("Vertical");
+        //deplacement fleche ordi
+        /*float mx = Input.GetAxisRaw("Vertical");
+        float my = -1 * Input.GetAxisRaw("Horizontal");
+        movement = new Vector2(mx, my).normalized;*/
 
-        movement = new Vector2(mx, my).normalized;
+        //deplacement joystick
+        Vector3 direction = Vector3.forward * joystick.Vertical + Vector3.right * joystick.Horizontal;
+        movement = new Vector2(direction.x, direction.z).normalized;
+
+        // changement de direction (flip du sprite)
+        if (movement.x < 0)
+        {
+            sprite.flipX = true;
+            facing = "left";
+        }
+        else if (movement.x > 0)
+        {
+            sprite.flipX = false;
+            facing = "right";
+        }
+
+        // changement d'animation 
+        if (movement.Equals(new Vector2(0,0)) || rb.constraints == RigidbodyConstraints2D.FreezeAll)
+        {
+            animator.SetBool("running", false);
+        } else
+        {
+            animator.SetBool("running", true);
+        }
+       
+    }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        Debug.Log("collision");
+    }
+
+    void unfreeze()
+    {
+        rb.constraints = RigidbodyConstraints2D.None;
     }
 }
