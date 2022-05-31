@@ -5,6 +5,7 @@ using System.Linq;
 using UnityEngine;
 using Random=UnityEngine.Random;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class FightManager : MonoBehaviour
 {
@@ -84,19 +85,66 @@ public class FightManager : MonoBehaviour
         else {
             GameObject.Find("Log").GetComponent<ChangeText>().Equality();
         }
+
+        death_player = GameObject.Find("HealthBar").GetComponent<HealthBar>().CheckHealth();
+        death_enemy = GameObject.Find("EnemyHealthBar").GetComponent<HealthBar>().CheckHealth();
+        if (death_player || death_enemy)
+        {
+            finCombat();
+        }
+
         return "youpi";
     }
 
-    public void finCombat() {
+    public void finCombat()
+    {
         death_player = GameObject.Find("HealthBar").GetComponent<HealthBar>().CheckHealth();
         death_enemy = GameObject.Find("EnemyHealthBar").GetComponent<HealthBar>().CheckHealth();
 
-        if (death_player) {
+        if (death_player)
+        {
             //Loose
+            UnityEngine.SceneManagement.SceneManager.LoadScene("Landing_Scene");
             Debug.Log("GameOver");
         }
-        if (death_enemy) {
+        if (death_enemy)
+        {
             //WIN
+            //UnityEngine.SceneManagement.SceneManager.LoadScene("game_scene");
+            //Debug.Log(UnityEngine.SceneManagement.SceneManager.sceneCount);
+
+            GameObject[] go2 = UnityEngine.SceneManagement.SceneManager.GetSceneByName("game_scene").GetRootGameObjects();
+            foreach (GameObject objet2 in go2)
+            {
+                if (objet2.name != "ennemy1")
+                {
+                    objet2.SetActive(true);
+                }
+
+                if (objet2.name == "player")
+                {
+                    //unfreeze
+                    objet2.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
+                }
+
+            }
+
+
+
+
+            GameObject[] go = UnityEngine.SceneManagement.SceneManager.GetSceneByName("CardDrawTest").GetRootGameObjects();
+            foreach (GameObject objet in go)
+            {
+
+                objet.SetActive(false);
+                //Destroy(objet);
+            }
+
+            UnityEngine.SceneManagement.SceneManager.UnloadScene("CardDrawTest");
+
+            UnityEngine.SceneManagement.SceneManager.SetActiveScene(UnityEngine.SceneManagement.SceneManager.GetSceneByName("game_scene"));
+
+
             Debug.Log("C'est gagné");
         }
     }

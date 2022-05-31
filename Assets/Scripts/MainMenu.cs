@@ -47,7 +47,13 @@ public class MainMenu: MonoBehaviour {
     //TODO set the Play scene once it's ready
     public void PlayGameButton()
     {
-        //UnityEngine.SceneManagement.SceneManager.LoadScene("SampleScene");
+        UnityEngine.SceneManagement.SceneManager.LoadScene("game_scene");
+        UnityEngine.SceneManagement.SceneManager.LoadScene("CardDrawTest", LoadSceneMode.Additive);
+        GameObject[] go = UnityEngine.SceneManagement.SceneManager.GetSceneByName("CardDrawTest").GetRootGameObjects();
+        foreach (GameObject objet in go)
+        {
+            objet.SetActive(false);
+        }
         Debug.Log("Playing");
     }
 }

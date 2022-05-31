@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 772861341991827359}
   - component: {fileID: 2164613488483076816}
   - component: {fileID: 7818281261464848607}
-  m_Layer: 5
+  m_Layer: 2
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -146,7 +146,7 @@ GameObject:
   - component: {fileID: 6551899552689296265}
   - component: {fileID: 6551899552689296267}
   - component: {fileID: 6551899552689296266}
-  m_Layer: 5
+  m_Layer: 2
   m_Name: ItemIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -227,7 +227,7 @@ GameObject:
   - component: {fileID: -1274862242363465079}
   - component: {fileID: -5577071319742890077}
   - component: {fileID: 7968543118838004653}
-  m_Layer: 5
+  m_Layer: 2
   m_Name: Card
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -400,7 +400,7 @@ GameObject:
   - component: {fileID: 6551899553317990397}
   - component: {fileID: 6551899553317990399}
   - component: {fileID: 6551899553317990398}
-  m_Layer: 5
+  m_Layer: 2
   m_Name: TextFrame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -477,7 +477,7 @@ GameObject:
   - component: {fileID: 6551899554003452404}
   - component: {fileID: 6551899554003452406}
   - component: {fileID: 6551899554003452405}
-  m_Layer: 5
+  m_Layer: 2
   m_Name: Frame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -553,7 +553,7 @@ GameObject:
   - component: {fileID: 8310403744588246779}
   - component: {fileID: 2982168297042475219}
   - component: {fileID: 5026108818145446114}
-  m_Layer: 5
+  m_Layer: 2
   m_Name: background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
