@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using Random=UnityEngine.Random;
+using TMPro;
 
 public class FightManager : MonoBehaviour
 {
@@ -13,7 +14,8 @@ public class FightManager : MonoBehaviour
     public GameObject Card;
     bool death_enemy = false;
     bool death_player = false;
-    
+    string enemy_card_play;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -26,7 +28,6 @@ public class FightManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
     }
 
     IEnumerator InitDeckInHand()
@@ -62,14 +63,26 @@ public class FightManager : MonoBehaviour
         // 0 win 2
         // 1 win 0
         // 2 win 1
+            if (enemy_card == 0) {
+                enemy_card_play = "Pierre";
+            }
+            if (enemy_card == 1) {
+                enemy_card_play = "Feuille";
+            }
+            if (enemy_card == 2) {
+                enemy_card_play = "Ciseaux";
+            }
         if (enemy_card == 0 && player_card ==2 || enemy_card == 1 && player_card == 0 || enemy_card == 2 && player_card == 1) {
             GameObject.Find("HealthBar").GetComponent<HealthBar>().looseHealth(1);
+            GameObject.Find("Log").GetComponent<ChangeText>().EnemyWin(enemy_card_play);
+
         }
         else if (enemy_card == 2 && player_card == 0 || enemy_card == 0 && player_card == 1 || enemy_card == 1 && player_card == 2) {
             GameObject.Find("EnemyHealthBar").GetComponent<HealthBar>().looseHealth(1);
+            GameObject.Find("Log").GetComponent<ChangeText>().PlayerWin(enemy_card_play);
         }
         else {
-            //egalité
+            GameObject.Find("Log").GetComponent<ChangeText>().Equality();
         }
         return "youpi";
     }

@@ -33,10 +33,10 @@ RectTransform:
   m_Father: {fileID: 6551899553317990397}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.000030517578, y: 34.399796}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2164613488483076816
 CanvasRenderer:
@@ -66,7 +66,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: LEAF
+  m_text: ROCK
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f2d69ea52a248224f9c0fac864e88e6c, type: 2}
   m_sharedMaterial: {fileID: -1448407633417048306, guid: f2d69ea52a248224f9c0fac864e88e6c, type: 2}
@@ -129,7 +129,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 50.427704, y: 49.627274, z: 50.427765, w: -17.87648}
+  m_margin: {x: -0.06599426, y: 18.864304, z: 0.14624023, w: 17.55397}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -170,8 +170,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 8.500198}
-  m_SizeDelta: {x: 45.0746, y: 45.0746}
+  m_AnchoredPosition: {x: 0.5149, y: 8.500198}
+  m_SizeDelta: {x: 46.1042, y: 45.0746}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6551899552689296267
 CanvasRenderer:
@@ -253,10 +253,10 @@ RectTransform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0.33244443, y: 0.43500003}
+  m_AnchorMax: {x: 0.55914813, y: 0.565}
+  m_AnchoredPosition: {x: -0.000015258789, y: 43.9}
+  m_SizeDelta: {x: -62.9615, y: -189.7957}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6551899552835445621
 CanvasRenderer:
@@ -281,7 +281,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_RaycastPadding: {x: 5.23, y: -2.52, z: 5.26, w: -1.77}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -368,7 +368,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 98.83, y: 97.63}
   m_EdgeRadius: 0
 --- !u!114 &7968543118838004653
 MonoBehaviour:
@@ -385,9 +385,8 @@ MonoBehaviour:
   It: {fileID: 6551899552835445610}
   this_card: []
   id: 0
-  symbol: 
   text_symbol: 
-  this_image: {fileID: 0}
+  this_sprite: {fileID: 0}
   that_image: {fileID: 6551899552689296266}
   this_text_symbol: {fileID: 7818281261464848607}
 --- !u!1 &6551899553317990396

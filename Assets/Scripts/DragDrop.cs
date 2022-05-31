@@ -64,26 +64,23 @@ public class DragDrop :  MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         on_enemy = false;
     }
 
-    public void OnMouseUp()
-    {
-        if (on_enemy) {
-            switch(this.GetComponent<ThisCard>().id) {
-                case 0:
-                    Debug.Log("Pierre");
-                    Destroy(gameObject);
-                    GameObject.Find("FightManager").GetComponent<FightManager>().Comparer(this.GetComponent<ThisCard>().id);
-                    break;
-                case 1:
-                    Debug.Log("Feuille");
-                    Destroy(gameObject);
-                    GameObject.Find("FightManager").GetComponent<FightManager>().Comparer(this.GetComponent<ThisCard>().id);
-                    break;
-                case 2:
-                    Debug.Log("Ciseaux");
-                    Destroy(gameObject);
-                    GameObject.Find("FightManager").GetComponent<FightManager>().Comparer(this.GetComponent<ThisCard>().id);
-                    break;
-            }
-        }
-    }
+    // public void OnMouseUp()
+    // {
+    //     if (on_enemy) {
+    //         switch(this.GetComponent<ThisCard>().id) {
+    //             case 0:
+    //                 Debug.Log("Pierre");
+    //                 GameObject.Find("FightManager").GetComponent<FightManager>().Comparer(this.GetComponent<ThisCard>().id);
+    //                 break;
+    //             case 1:
+    //                 Debug.Log("Feuille");
+    //                 GameObject.Find("FightManager").GetComponent<FightManager>().Comparer(this.GetComponent<ThisCard>().id);
+    //                 break;
+    //             case 2:
+    //                 Debug.Log("Ciseaux");
+    //                 GameObject.Find("FightManager").GetComponent<FightManager>().Comparer(this.GetComponent<ThisCard>().id);
+    //                 break;
+    //         }
+    //     }
+    //}
 }
