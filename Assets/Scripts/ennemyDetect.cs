@@ -14,6 +14,7 @@ public class ennemyDetect : MonoBehaviour
 
     bool checkForPlayer = true;
     bool walkToPlayer = false;
+    bool allowCollision = false;
     RaycastHit2D hitMade;
 
     // Start is called before the first frame update
@@ -58,6 +59,7 @@ public class ennemyDetect : MonoBehaviour
             if (hit.collider != null)
             {
                 Debug.Log("moving to " + hit.collider.name);
+                this.allowCollision = true;
                 //Debug.DrawLine(transform.position, hit.point, Color.red, 1);
                 checkForPlayer = false;
                 //freeze player
@@ -87,30 +89,33 @@ public class ennemyDetect : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D col)
     {
-        Debug.Log(col);
-        Debug.Log("TTTTTTTTTTTTTTTTTTTTT");
-
-        walkToPlayer = false;
-        animator.SetBool("running", false);
-
-        //start the fight
-        GameObject[] go = UnityEngine.SceneManagement.SceneManager.GetSceneByName("game_scene").GetRootGameObjects();
-        foreach (GameObject objet in go)
+        if (this.allowCollision)
         {
-            objet.SetActive(false);
-        }
+            Debug.Log(col);
+            Debug.Log("TTTTTTTTTTTTTTTTTTTTT");
 
-        if (UnityEngine.SceneManagement.SceneManager.sceneCount > 1)
-        {
-            GameObject[] go2 = UnityEngine.SceneManagement.SceneManager.GetSceneByName("CardDrawTest").GetRootGameObjects();
-            foreach (GameObject objet2 in go2)
+            walkToPlayer = false;
+            animator.SetBool("running", false);
+
+            this.allowCollision = false;
+
+            //start the fight
+            GameObject[] go = UnityEngine.SceneManagement.SceneManager.GetSceneByName("game_scene").GetRootGameObjects();
+            foreach (GameObject objet in go)
             {
-                objet2.SetActive(true);
+                objet.SetActive(false);
             }
-            UnityEngine.SceneManagement.SceneManager.SetActiveScene(UnityEngine.SceneManagement.SceneManager.GetSceneByName("CardDrawTest"));
+
+            if (UnityEngine.SceneManagement.SceneManager.sceneCount > 1)
+            {
+                GameObject[] go2 = UnityEngine.SceneManagement.SceneManager.GetSceneByName("CardDrawTest").GetRootGameObjects();
+                foreach (GameObject objet2 in go2)
+                {
+                    objet2.SetActive(true);
+                }
+                UnityEngine.SceneManagement.SceneManager.SetActiveScene(UnityEngine.SceneManagement.SceneManager.GetSceneByName("CardDrawTest"));
+            }
         }
-
-
         //Debug.Log(col.gameObject);
     }
 }
