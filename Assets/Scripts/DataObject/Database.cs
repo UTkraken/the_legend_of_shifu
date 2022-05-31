@@ -30,9 +30,9 @@ namespace DataObject
 
         void createDeck()
         {
-            deck.Add(new Card(0, "Pierre", Resources.Load<Sprite>("Ressources/stone")));
-            deck.Add(new Card(1, "Feuille", Resources.Load<Sprite>("leaf")));
-            deck.Add(new Card(2, "Ciseaux", Resources.Load<Sprite>("sci")));
+            deck.Add(new Card(0, "Pierre", Resources.Load<Sprite>("Resources/stone")));
+            deck.Add(new Card(1, "Feuille", Resources.Load<Sprite>("Resources/Resources/leaf")));
+            deck.Add(new Card(2, "Ciseaux", Resources.Load<Sprite>("Resources/sci")));
 
         }
     }

@@ -14,7 +14,7 @@ public class ThisCard : MonoBehaviour
     
     public int id;
     public string text_symbol;
-   public Sprite this_sprite;
+    public Sprite this_sprite;
     public Image that_image;
 
     public TextMeshProUGUI this_text_symbol;
@@ -27,8 +27,15 @@ public class ThisCard : MonoBehaviour
         
         id = this_card[0].id;
         this_text_symbol.text = this_card[0].textSymbol;
-        this_sprite = this_card[0].ThisImage;
 
-        that_image.sprite = this_sprite;
+        if (id ==  0) {
+            that_image.sprite = Resources.Load<Sprite>("stone");
+        }
+        if (id ==  1) {
+            that_image.sprite = Resources.Load<Sprite>("leaf");
+        }
+        if (id ==  2) {
+            that_image.sprite = Resources.Load<Sprite>("sci");
+        }
     }
 }

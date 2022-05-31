@@ -11,7 +11,7 @@ namespace DataObject
     {
         public int id;
         public string textSymbol;
-        public Sprite ThisImage;
+        public Sprite ThisSprite;
 
 
         public Card() { }
@@ -19,11 +19,11 @@ namespace DataObject
         public Card(
             int id,
             string textSymbol,
-            Sprite thisImage)
+            Sprite thisSprite)
         {
             this.id = id;
             this.textSymbol = textSymbol;
-            this.ThisImage = ThisImage;
+            this.ThisSprite = thisSprite;
         }
 
     }
