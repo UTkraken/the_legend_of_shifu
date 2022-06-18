@@ -40,15 +40,15 @@ public class PlayerMovement : MonoBehaviour
 
         //deplacement joystick
         Vector3 direction = Vector3.forward * joystick.Vertical + Vector3.right * joystick.Horizontal;
-        movement = new Vector2(direction.z, -1 * direction.x).normalized;
+        movement = new Vector2(direction.x, direction.z).normalized;
 
         // changement de direction (flip du sprite)
-        if (movement.y > 0)
+        if (movement.x < 0)
         {
             sprite.flipX = true;
             facing = "left";
         }
-        else if (movement.y < 0)
+        else if (movement.x > 0)
         {
             sprite.flipX = false;
             facing = "right";

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ennemyDetect : MonoBehaviour
 {
@@ -9,9 +10,11 @@ public class ennemyDetect : MonoBehaviour
     public float detectRange = 5.0f;
     public float speed = 0.4f;
     public Animator animator;
+    public Player_save pSave;
 
     bool checkForPlayer = true;
     bool walkToPlayer = false;
+    bool allowCollision = false;
     RaycastHit2D hitMade;
 
     // Start is called before the first frame update
@@ -32,19 +35,23 @@ public class ennemyDetect : MonoBehaviour
             switch (detectDirection)
             {
                 case 0:
-                    direction = Vector2.up;
+                    //direction = Vector2.up;
+                    direction = -Vector2.right;
                     break;
 
                 case 1:
-                    direction = Vector2.right;
+                    //direction = Vector2.right;
+                    direction = Vector2.up;
                     break;
 
                 case 2:
-                    direction = -Vector2.up;
+                    //direction = -Vector2.up;
+                    direction = Vector2.right;
                     break;
 
                 case 3:
-                    direction = -Vector2.right;
+                    //direction = -Vector2.right;
+                    direction = -Vector2.up;
                     break;
             }
 
@@ -52,12 +59,15 @@ public class ennemyDetect : MonoBehaviour
             if (hit.collider != null)
             {
                 Debug.Log("moving to " + hit.collider.name);
+                this.allowCollision = true;
                 //Debug.DrawLine(transform.position, hit.point, Color.red, 1);
                 checkForPlayer = false;
                 //freeze player
+                Debug.Log(hit.collider);
                 hit.collider.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
-                //switch player anim
+                //switch player anim and save info
                 hit.collider.GetComponent<Animator>().SetBool("running", false);
+                pSave.savePlayerData();
 
                 hitMade = hit;
                 walkToPlayer = true;
@@ -79,9 +89,33 @@ public class ennemyDetect : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D col)
     {
-        walkToPlayer = false;
-        animator.SetBool("running", false);
+        if (this.allowCollision)
+        {
+            Debug.Log(col);
+            Debug.Log("TTTTTTTTTTTTTTTTTTTTT");
 
+            walkToPlayer = false;
+            animator.SetBool("running", false);
+
+            this.allowCollision = false;
+
+            //start the fight
+            GameObject[] go = UnityEngine.SceneManagement.SceneManager.GetSceneByName("game_scene").GetRootGameObjects();
+            foreach (GameObject objet in go)
+            {
+                objet.SetActive(false);
+            }
+
+            if (UnityEngine.SceneManagement.SceneManager.sceneCount > 1)
+            {
+                GameObject[] go2 = UnityEngine.SceneManagement.SceneManager.GetSceneByName("CardDrawTest").GetRootGameObjects();
+                foreach (GameObject objet2 in go2)
+                {
+                    objet2.SetActive(true);
+                }
+                UnityEngine.SceneManagement.SceneManager.SetActiveScene(UnityEngine.SceneManagement.SceneManager.GetSceneByName("CardDrawTest"));
+            }
+        }
         //Debug.Log(col.gameObject);
     }
 }

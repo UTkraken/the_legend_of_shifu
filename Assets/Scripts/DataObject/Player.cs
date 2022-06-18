@@ -11,7 +11,7 @@ namespace DataObject
 
         List<Card> available_cards = new List<Card>();
 
-        Deck deck = new Deck();
+    //    Deck deck = new Deck();
 
         // Start is called before the first frame update
         void Start()
@@ -25,9 +25,9 @@ namespace DataObject
 
         }
 
-        public Deck GetDeck()
+        /*public Deck GetDeck()
         {
             return deck;
-        }
+        }*/
     }
 }

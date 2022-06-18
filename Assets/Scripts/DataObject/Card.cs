@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 using UnityEngine.UI;
 
 namespace DataObject
@@ -8,20 +9,21 @@ namespace DataObject
     [System.Serializable]
     public class Card : MonoBehaviour
     {
-        private int id;
-        private string symbol;
-        private string textSymbol;
+        public int id;
+        public string textSymbol;
+        public Sprite ThisSprite;
 
-        private Sprite ThisImage;
 
         public Card() { }
 
-        public Card(int id, string symbol, string textSymbol, Sprite ThisImage)
+        public Card(
+            int id,
+            string textSymbol,
+            Sprite thisSprite)
         {
             this.id = id;
-            this.symbol = symbol;
             this.textSymbol = textSymbol;
-            this.ThisImage = ThisImage;
+            this.ThisSprite = thisSprite;
         }
 
     }
